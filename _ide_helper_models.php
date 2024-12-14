@@ -45,6 +45,19 @@ namespace App\Models{
 /**
  * 
  *
+ * @property-read \App\Models\City|null $city
+ * @property-read \App\Models\User|null $owner
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Restaurant newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Restaurant newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Restaurant query()
+ */
+	class Restaurant extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
  * @property int $id
  * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -78,6 +91,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
+ * @property-read \App\Models\Restaurant|null $restaurant
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Role> $roles
  * @property-read int|null $roles_count
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
