@@ -26,10 +26,6 @@ class RestaurantController extends Controller
         ]);
     }
 
-    // public function halo(): Response
-    // {
-    //     $this->
-    // }
 
     public function create(): Response
     {
