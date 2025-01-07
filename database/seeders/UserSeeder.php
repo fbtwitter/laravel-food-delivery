@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-//        $this->createAdminUser();
+        $this->createAdminUser();
         $this->createVendorUser();
     }
 
@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
     {
         $vendor = User::create([
             'name' => "Restaurant owner",
-            "email" => "vendor2@admin.com",
+            "email" => "vendor@admin.com",
             "password" => bcrypt("password"),
         ]);
         $vendor->roles()->sync(Role::where("name", RoleName::VENDOR->value)->first());

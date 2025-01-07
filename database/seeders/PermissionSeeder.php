@@ -25,7 +25,9 @@ class PermissionSeeder extends Seeder
 
         $resources = [
             'user',
-            'restaurant'
+            'restaurant',
+            'category',
+            'product'
         ];
 
         collect($resources)->crossJoin($actions)->map(function ($set) {

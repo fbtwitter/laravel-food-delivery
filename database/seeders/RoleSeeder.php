@@ -16,7 +16,7 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-//        $this->createAdminRole();
+        $this->createAdminRole();
         $this->createVendorRole();
     }
 
@@ -38,6 +38,12 @@ class RoleSeeder extends Seeder
 
     protected function createVendorRole(): void
     {
-        $this->createRole(RoleName::VENDOR, collect());
+        $permissions = Permission::query()
+            ->where("name", "like", "category.%")
+            ->orWhere("name", "like", "product.%")
+            ->pluck("id");
+
+//        $this->createRole(RoleName::VENDOR, collect());
+        $this->createRole(RoleName::VENDOR, $permissions);
     }
 }
