@@ -32,9 +32,13 @@ defineProps({
                                     <div class="">
                                         <div class="text-2xl font-bold">{{ category.name }}</div>
                                     </div>
-                                    <div class="flex gap-4 items-center">
-                                        Edit / Delete Category Buttons: Coming Soon
-                                    </div>
+                                    <Link :href="route('vendor.categories.edit', category)"
+                                          class="btn btn-secondary btn-sm">Edit
+                                    </Link>
+                                    <Link :href="route('vendor.categories.destroy', category)"
+                                          class="btn btn-danger btn-sm" method="delete" as="button">
+                                        Delete
+                                    </Link>
                                 </div>
                                 <div>
                                     Add Product Button: Coming Soon
