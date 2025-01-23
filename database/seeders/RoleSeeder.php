@@ -18,6 +18,7 @@ class RoleSeeder extends Seeder
     {
         $this->createAdminRole();
         $this->createVendorRole();
+        $this->createCustomerRole();
     }
 
     protected function createRole(RoleName $role, Collection $permissions): void
@@ -45,5 +46,12 @@ class RoleSeeder extends Seeder
 
 //        $this->createRole(RoleName::VENDOR, collect());
         $this->createRole(RoleName::VENDOR, $permissions);
+    }
+
+    public function createCustomerRole(): void
+    {
+        $permissions = Permission::where("name", "cart.add")->get();
+
+        $this->createRole(RoleName::CUSTOMER, $permissions);
     }
 }

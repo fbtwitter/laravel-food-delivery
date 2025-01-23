@@ -14,13 +14,14 @@ class UserSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    protected function run(): void
     {
         $this->createAdminUser();
         $this->createVendorUser();
+        $this->createCustomerUser();
     }
 
-    public function createAdminUser(): void
+    private function createAdminUser(): void
     {
         User::create([
             'name' => "Admin User",
@@ -29,7 +30,7 @@ class UserSeeder extends Seeder
         ])->roles()->sync(Role::where("name", RoleName::ADMIN->value)->first());
     }
 
-    public function createVendorUser(): void
+    private function createVendorUser(): void
     {
         $vendor = User::create([
             'name' => "Restaurant owner",
@@ -43,6 +44,17 @@ class UserSeeder extends Seeder
             "name" => "Restaurant The Apic",
             "address" => "Jalan Moren",
         ]);
+    }
+
+    private function createCustomerUser(): void
+    {
+        $vendor = User::create([
+            "name" => "Loyal Customer",
+            "email" => "customer@admin.com",
+            "password" => bcrypt("password"),
+        ]);
+
+        $vendor->roles()->sync(Role::where("name", RoleName::CUSTOMER->value)->first());
     }
 
 
